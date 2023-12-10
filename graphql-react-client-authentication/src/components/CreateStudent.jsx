@@ -50,8 +50,12 @@ const CreateStudent = () => {
     const saveStudent = (e) => {
         setShowLoading(true);
         e.preventDefault();
-
-
+        // Add user
+        addStudent( { variables: { studentNumber, password,
+            firstName, lastName, address, city,
+            phoneNumber, email, program } 
+            });
+        // Clear input fields
         setStudentNumber('');
         setFirstName('');
         setLastName('');
