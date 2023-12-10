@@ -50,7 +50,10 @@ function Login() {
           });
           //refetchQueries: [{ query: LOGGED_IN_USER }],
           console.log('data from server: ', data)
-          console.log('Logged in as:', data.loginUser); 
+          console.log('Logged in as:', data.loginUser);
+          setScreen(data.loginUser);
+          setStudentNumber('');
+          setPassword('');
           console.log('screen: ', screen)
         } catch (error) {
           console.error('Login error:', error);
