@@ -62,6 +62,11 @@ const StudentList = () => {
                             <td>{student.phoneNumber}</td>
                             <td>{student.email}</td>
                             <td>{student.program}</td>
+
+                            <td>
+                                <Link to={`/editstudent/${student.id}`}>Edit</Link>
+                            </td>
+
                         </tr>
                 ))}
              </tbody>
