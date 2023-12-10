@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react';
 import {gql, useQuery, useMutation} from "@apollo/client";
 import { useParams, useNavigate } from 'react-router-dom';
 
+import EditCourse from './EditCourse';
 //
 //
 // To parse the GraphQL operations, we use a special function
@@ -116,6 +117,7 @@ const ListCourses = () => {
                             <td>{course.section}</td>
                             <td>{course.semester}</td>
                             <td>
+                                <button    className = "center" onClick={() => handleClick(course.id)}>Edit Course</button>
                                 <button   className = "center" onClick={() => DropCourse(course.id)}>Drop Course</button>
                             </td>
                         </tr>
@@ -124,7 +126,15 @@ const ListCourses = () => {
             </table>
             {selectedCourse && (
             <div>
-
+                <h2>Edit Course</h2>
+                <EditCourse
+                    courseId={selectedCourse}
+                    existingCourseCode={data.studentcourses.find((course) => course.id === selectedCourse).courseCode}
+                    existingCourseName={data.studentcourses.find((course) => course.id === selectedCourse).courseName}
+                    existingSection={data.studentcourses.find((course) => course.id === selectedCourse).section}
+                    existingSemester={data.studentcourses.find((course) => course.id === selectedCourse).semester}
+                    onClose={() => setSelectedCourse(null)}
+                />
             </div>
         )}
 
